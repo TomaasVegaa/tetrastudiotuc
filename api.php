@@ -141,10 +141,27 @@ function cleanText($value, $maxLength, $allowNewlines = false) {
     return substr($value, 0, $maxLength);
 }
 
+function saveLeadLocally($contact) {
+    $leadsFile = __DIR__ . DIRECTORY_SEPARATOR . 'solicitudes.json';
+    $leads = [];
+    if (is_file($leadsFile)) {
+        $stored = json_decode((string) @file_get_contents($leadsFile), true);
+        if (is_array($stored)) $leads = $stored;
+    }
+    $record = array_merge($contact, [
+        'id' => uniqid('solicitud_', true),
+        'created_at' => date('c'),
+        'ip' => clientIp(),
+    ]);
+    array_unshift($leads, $record);
+    if (count($leads) > 500) $leads = array_slice($leads, 0, 500);
+    @file_put_contents($leadsFile, json_encode($leads, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+}
+
 function sendContactEmail($contact) {
     $apiKey = configValue('RESEND_API_KEY', 'resend_api_key');
-    $to = configValue('CONTACT_TO', 'contact_to', 'tetra.studio26@gmail.com');
-    $from = configValue('CONTACT_FROM', 'contact_from');
+    $to = configValue('CONTACT_TO', 'contact_to', 'hola@tetrastudiotuc.com');
+    $from = configValue('CONTACT_FROM', 'contact_from', 'Tetra Studio <onboarding@resend.dev>');
     if ($apiKey === '' || $from === '') {
         return ['ok' => false, 'configuration' => false, 'to' => $to];
     }
@@ -165,12 +182,34 @@ function sendContactEmail($contact) {
         $contact['description'] !== '' ? $contact['description'] : '-',
     ]);
 
+    $html = '<div style="font-family:Segoe UI,Helvetica,Arial,sans-serif;max-width:600px;margin:auto;padding:28px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;color:#111827;">'
+        . '<div style="margin-bottom:20px;border-bottom:2px solid #8b5cf6;padding-bottom:12px;">'
+        . '<h2 style="margin:0;color:#111827;font-size:22px;">Nueva solicitud de Creator</h2>'
+        . '<p style="margin:4px 0 0;color:#6b7280;font-size:14px;">Recibida desde la web de Tetra Studio</p>'
+        . '</div>'
+        . '<table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:20px;">'
+        . '<tr><td style="padding:8px 0;color:#6b7280;width:170px;font-weight:600;">Marca / Cliente:</td><td style="padding:8px 0;color:#111827;font-weight:700;">' . htmlspecialchars($contact['brand'], ENT_QUOTES, 'UTF-8') . '</td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Email de contacto:</td><td style="padding:8px 0;"><a href="mailto:' . htmlspecialchars($contact['email'], ENT_QUOTES, 'UTF-8') . '" style="color:#7c3aed;text-decoration:none;font-weight:600;">' . htmlspecialchars($contact['email'], ENT_QUOTES, 'UTF-8') . '</a></td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Tipo de contenido:</td><td style="padding:8px 0;color:#111827;">' . htmlspecialchars($contact['contentType'], ENT_QUOTES, 'UTF-8') . '</td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Categoría:</td><td style="padding:8px 0;color:#111827;">' . htmlspecialchars($contact['category'], ENT_QUOTES, 'UTF-8') . '</td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Cantidad de creators:</td><td style="padding:8px 0;color:#111827;">' . (int) $contact['creatorCount'] . '</td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Presupuesto aprox.:</td><td style="padding:8px 0;color:#111827;">' . htmlspecialchars($contact['budget'], ENT_QUOTES, 'UTF-8') . '</td></tr>'
+        . '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Fecha estimada:</td><td style="padding:8px 0;color:#111827;">' . htmlspecialchars($contact['date'] !== '' ? $contact['date'] : 'No especificada', ENT_QUOTES, 'UTF-8') . '</td></tr>'
+        . '</table>'
+        . '<div style="margin-top:16px;padding:16px;background:#f9fafb;border:1px solid #f3f4f6;border-radius:8px;">'
+        . '<strong style="display:block;margin-bottom:8px;color:#374151;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;">Descripción del proyecto:</strong>'
+        . '<p style="margin:0;color:#1f2937;font-size:14px;line-height:1.6;white-space:pre-wrap;">' . htmlspecialchars($contact['description'] !== '' ? $contact['description'] : 'Sin descripción adicional', ENT_QUOTES, 'UTF-8') . '</p>'
+        . '</div>'
+        . '<p style="margin-top:24px;margin-bottom:0;font-size:12px;color:#9ca3af;border-top:1px solid #f3f4f6;padding-top:12px;">Podés responder directamente a este correo para escribirle al cliente.</p>'
+        . '</div>';
+
     $payload = json_encode([
         'from' => $from,
         'to' => [$to],
         'reply_to' => $contact['email'],
         'subject' => $subject,
         'text' => $text,
+        'html' => $html,
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     if (function_exists('curl_init')) {
@@ -269,6 +308,8 @@ if ($action === 'contact') {
     if ($contact['brand'] === '') sendJsonResponse(422, ['error' => 'Ingresá el nombre de la marca']);
     if (!filter_var($contact['email'], FILTER_VALIDATE_EMAIL)) sendJsonResponse(422, ['error' => 'Ingresá un email válido']);
     if ($contact['date'] !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $contact['date'])) sendJsonResponse(422, ['error' => 'La fecha no es válida']);
+
+    saveLeadLocally($contact);
 
     $delivery = sendContactEmail($contact);
     if (!$delivery['ok']) {

@@ -11,20 +11,21 @@ return [
     // Acceso al panel TETRA CMS.
     'admin_password' => 'CAMBIAR_POR_UNA_CLAVE_LARGA_Y_UNICA',
 
-    // Base creada previamente desde hPanel. Usá los valores exactos de Hostinger.
+    // Base creada previamente desde hPanel. Usá los valores exactos de Hostinger (o XAMPP).
     'db_host' => 'localhost',
     'db_port' => '3306',
     'db_name' => 'u123456789_tetra',
     'db_user' => 'u123456789_tetra',
     'db_password' => 'CAMBIAR_POR_LA_CLAVE_DE_MYSQL',
-    'db_required' => true,
-    'db_auto_create' => false,
+    'db_required' => false,
+    'db_auto_create' => true,
     'db_persistent' => true,
-    'write_file_backup' => false,
+    'write_file_backup' => true,
 
-    // Formulario de contacto. CONTACT_FROM debe usar un dominio verificado.
+    // Formulario de contacto (Resend). Obtené tu clave gratuita en https://resend.com
     'resend_api_key' => '',
-    'contact_to' => 'tetra.studio26@gmail.com',
+    'contact_to' => 'hola@tetrastudiotuc.com',
+    // Si aún no tenés dominio verificado en Resend, podés usar 'Tetra Studio <onboarding@resend.dev>'
     'contact_from' => 'Tetra Studio <contacto@tu-dominio.com>',
-    'email_required' => true,
+    'email_required' => false,
 ];

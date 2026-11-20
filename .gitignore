@@ -7,6 +7,7 @@ npm-debug.log*
 
 # Configuración privada local (contraseñas y claves de servicios)
 config.local.php
+solicitudes.json
 .env
 .env.local
 

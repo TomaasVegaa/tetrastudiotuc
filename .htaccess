@@ -4,6 +4,9 @@
 RewriteEngine On
 RewriteRule (^|/)\. - [F,L]
 
+# Panel de administración CMS independiente
+RewriteRule ^admin/?$ admin.html [L]
+
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "SAMEORIGIN"
@@ -12,6 +15,6 @@ RewriteRule (^|/)\. - [F,L]
 </IfModule>
 
 # Archivos de configuración, backend alternativo y documentación interna.
-<FilesMatch "^(config\.local\.php|config\.local\.php\.example|SECURITY-SETUP\.md|HOSTINGER-SETUP\.md|database\.sql|data\.json|server\.js|render\.yaml|package(-lock)?\.json)$">
+<FilesMatch "^(config\.local\.php|config\.local\.php\.example|SECURITY-SETUP\.md|HOSTINGER-SETUP\.md|database\.sql|data\.json|solicitudes\.json|server\.js|render\.yaml|package(-lock)?\.json)$">
     Require all denied
 </FilesMatch>

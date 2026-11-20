@@ -20,8 +20,8 @@ var ROOT = __dirname;
 var DATA_FILE = process.env.DATA_FILE || process.env.DATA_PATH || path.join(ROOT, 'data.json');
 var ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
 var ADMIN_SECRET = process.env.ADMIN_SECRET || (ADMIN_PASSWORD ? crypto.createHash('sha256').update(ADMIN_PASSWORD).digest('hex') : '');
-var CONTACT_TO = process.env.CONTACT_TO || 'tetra.studio26@gmail.com';
-var CONTACT_FROM = process.env.CONTACT_FROM || '';
+var CONTACT_TO = process.env.CONTACT_TO || 'hola@tetrastudiotuc.com';
+var CONTACT_FROM = process.env.CONTACT_FROM || 'Tetra Studio <onboarding@resend.dev>';
 var RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 var SESSION_SECONDS = 8 * 60 * 60;
 var loginAttempts = new Map();
@@ -143,7 +143,7 @@ function revokeAdminSession(req) {
         while (normalized.length % 4) normalized += '=';
         var expiresAt = parseInt(Buffer.from(normalized, 'base64').toString('utf8'), 10);
         if (expiresAt > Date.now()) revokedSessions.set(token, expiresAt);
-    } catch (e) {}
+    } catch (e) { }
 }
 
 function sessionCookie(req, value, maxAge) {
@@ -210,6 +210,36 @@ function validEmail(value) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
 }
 
+function escapeHtml(str) {
+    return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function saveLeadLocally(contact) {
+    try {
+        var leadsFile = path.join(ROOT, 'solicitudes.json');
+        var leads = [];
+        if (fs.existsSync(leadsFile)) {
+            var raw = fs.readFileSync(leadsFile, 'utf8');
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) leads = parsed;
+        }
+        var record = Object.assign({}, contact, {
+            id: 'solicitud_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+            created_at: new Date().toISOString()
+        });
+        leads.unshift(record);
+        if (leads.length > 500) leads = leads.slice(0, 500);
+        fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), 'utf8');
+    } catch (e) {
+        console.error('Error guardando solicitud local:', e.message);
+    }
+}
+
 function sendContactEmail(contact) {
     return new Promise(function (resolve, reject) {
         if (!RESEND_API_KEY || !CONTACT_FROM) {
@@ -229,12 +259,35 @@ function sendContactEmail(contact) {
             'Descripción:',
             contact.description || '-'
         ].join('\n');
+
+        var html = '<div style="font-family:Segoe UI,Helvetica,Arial,sans-serif;max-width:600px;margin:auto;padding:28px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;color:#111827;">'
+            + '<div style="margin-bottom:20px;border-bottom:2px solid #8b5cf6;padding-bottom:12px;">'
+            + '<h2 style="margin:0;color:#111827;font-size:22px;">Nueva solicitud de Creator</h2>'
+            + '<p style="margin:4px 0 0;color:#6b7280;font-size:14px;">Recibida desde la web de Tetra Studio</p>'
+            + '</div>'
+            + '<table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:20px;">'
+            + '<tr><td style="padding:8px 0;color:#6b7280;width:170px;font-weight:600;">Marca / Cliente:</td><td style="padding:8px 0;color:#111827;font-weight:700;">' + escapeHtml(contact.brand) + '</td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Email de contacto:</td><td style="padding:8px 0;"><a href="mailto:' + escapeHtml(contact.email) + '" style="color:#7c3aed;text-decoration:none;font-weight:600;">' + escapeHtml(contact.email) + '</a></td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Tipo de contenido:</td><td style="padding:8px 0;color:#111827;">' + escapeHtml(contact.contentType) + '</td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Categoría:</td><td style="padding:8px 0;color:#111827;">' + escapeHtml(contact.category) + '</td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Cantidad de creators:</td><td style="padding:8px 0;color:#111827;">' + contact.creatorCount + '</td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Presupuesto aprox.:</td><td style="padding:8px 0;color:#111827;">' + escapeHtml(contact.budget) + '</td></tr>'
+            + '<tr><td style="padding:8px 0;color:#6b7280;font-weight:600;">Fecha estimada:</td><td style="padding:8px 0;color:#111827;">' + (contact.date ? escapeHtml(contact.date) : 'No especificada') + '</td></tr>'
+            + '</table>'
+            + '<div style="margin-top:16px;padding:16px;background:#f9fafb;border:1px solid #f3f4f6;border-radius:8px;">'
+            + '<strong style="display:block;margin-bottom:8px;color:#374151;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;">Descripción del proyecto:</strong>'
+            + '<p style="margin:0;color:#1f2937;font-size:14px;line-height:1.6;white-space:pre-wrap;">' + escapeHtml(contact.description || 'Sin descripción adicional') + '</p>'
+            + '</div>'
+            + '<p style="margin-top:24px;margin-bottom:0;font-size:12px;color:#9ca3af;border-top:1px solid #f3f4f6;padding-top:12px;">Podés responder directamente a este correo para escribirle al cliente.</p>'
+            + '</div>';
+
         var body = JSON.stringify({
             from: CONTACT_FROM,
             to: [CONTACT_TO],
             reply_to: contact.email,
             subject: 'Nueva solicitud de creator - ' + contact.brand,
-            text: text
+            text: text,
+            html: html
         });
         var request = https.request({
             hostname: 'api.resend.com',
@@ -483,6 +536,7 @@ var server = http.createServer(function (req, res) {
             if (contact.date && !/^\d{4}-\d{2}-\d{2}$/.test(contact.date)) {
                 return sendJson(res, 422, { error: 'La fecha no es válida' });
             }
+            saveLeadLocally(contact);
             sendContactEmail(contact).then(function (delivery) {
                 if (!delivery.ok) {
                     return sendJson(res, 503, {
@@ -536,11 +590,9 @@ var server = http.createServer(function (req, res) {
     // Redireccionamientos amigables y rutas de la web
     var cleanPath = urlPath.replace(/^\/+|\/+$/g, '').toLowerCase();
 
-    // /admin -> /#admin
+    // /admin -> admin.html (CMS independiente)
     if (cleanPath === 'admin') {
-        res.writeHead(302, { 'Location': '/#admin' });
-        res.end();
-        return;
+        urlPath = '/admin.html';
     }
 
     // Redirección de secciones a sus anclas correspondientes

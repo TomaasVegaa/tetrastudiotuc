@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TETRA CMS — Panel de Administración</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="logos/favicon.png?v=1">
+    <link rel="icon" href="favicon.ico?v=1" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=3.2">
+    <link rel="stylesheet" href="admin.css?v=3.2">
+    <style>
+        body.admin-page {
+            background: #0d0d0d;
+            color: #f8f9f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .admin-page__topbar {
+            background: #141414;
+            border-bottom: 1px solid #262626;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .admin-page__brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .admin-page__logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        .admin-page__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+        }
+        .admin-page__badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            background: #262626;
+            color: #a3a3a3;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .admin-page__links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .admin-page__link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: #a3a3a3;
+            transition: color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .admin-page__link:hover {
+            color: #ffffff;
+        }
+        .admin-page__main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .admin-page__welcome {
+            max-width: 520px;
+            margin-bottom: 32px;
+        }
+        .admin-page__welcome h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .admin-page__welcome p {
+            font-size: 0.9rem;
+            color: #737373;
+            line-height: 1.6;
+        }
+        .admin-page__action-btn {
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 14px 28px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .admin-page__action-btn:hover {
+            background: #e5e5e5;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="admin-page">
+    <header class="admin-page__topbar">
+        <div class="admin-page__brand">
+            <img src="logos/tetra-logo-white-nav.png" alt="Tetra Studio" class="admin-page__logo">
+            <span class="admin-page__title">TETRA CMS</span>
+            <span class="admin-page__badge">Privado</span>
+        </div>
+        <div class="admin-page__links">
+            <a href="index.html" class="admin-page__link">&larr; Volver a la web</a>
+        </div>
+    </header>
+
+    <main class="admin-page__main">
+        <div class="admin-page__welcome">
+            <h1>Panel de Control</h1>
+            <p>Gestioná el contenido, textos, imágenes, proyectos y creadores de TETRA STUDIO en tiempo real.</p>
+        </div>
+        <button id="openCmsBtn" class="admin-page__action-btn">ABRIR TETRA CMS &rarr;</button>
+    </main>
+
+    <script src="admin.js?v=3.2"></script>
+</body>
+</html>

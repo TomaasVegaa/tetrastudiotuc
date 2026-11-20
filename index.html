@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TETRA STUDIO — Creative Studio for Brands</title>
+    <title>TETRA STUDIO — Tecnología y Contenido para Escalar tu Negocio</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="logos/favicon.png?v=1">
+    <link rel="icon" href="favicon.ico?v=1" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png?v=1">
+    <meta name="description"
+        content="Estudio tecnológico y creativo en Tucumán. Unificamos tu tienda online sin comisiones, facturación automática con ARCA y producción audiovisual en una sola suscripción mensual, o desarrollamos sistemas a medida.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3.0">
-    <link rel="stylesheet" href="admin.css?v=3.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=3.7">
 </head>
+
 <body>
 
     <!-- HEADER -->
     <header class="header" id="header">
         <div class="header__inner">
-            <a href="#hero" class="header__logo">
-                <img src="logos/TETRAlogSF.png" alt="Tetra Studio" class="tetra-symbol">
+            <a href="#hero" class="header__logo" aria-label="Tetra Studio">
+                <img src="logos/tetra-logo-white-nav.png" alt="Tetra Studio" class="tetra-symbol tetra-symbol--on-dark">
+                <img src="logos/tetra-logo-nav.png" alt="Tetra Studio" class="tetra-symbol tetra-symbol--on-light">
             </a>
             <nav class="header__nav" id="mainNav">
                 <a href="#estudio" class="header__nav-link">ESTUDIO</a>
                 <a href="#servicios" class="header__nav-link">SERVICIOS</a>
+                <a href="#planes" class="header__nav-link">PLANES</a>
                 <a href="#creators" class="header__nav-link">CREATORS</a>
                 <a href="#proyectos" class="header__nav-link">PROYECTOS</a>
                 <a href="#contacto" class="header__nav-link">CONTACTO</a>
             </nav>
-            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="header__cta">HABLEMOS <span>&rarr;</span></a>
-            <button class="header__burger" id="burgerBtn" aria-label="Menu">
+            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="header__cta">HABLEMOS
+                <span>&rarr;</span></a>
+            <button class="header__burger" id="burgerBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
             </button>
@@ -39,36 +48,73 @@
             <nav class="mobile-menu__nav">
                 <a href="#estudio" class="mobile-menu__link">ESTUDIO</a>
                 <a href="#servicios" class="mobile-menu__link">SERVICIOS</a>
+                <a href="#planes" class="mobile-menu__link">PLANES</a>
                 <a href="#creators" class="mobile-menu__link">CREATORS</a>
                 <a href="#proyectos" class="mobile-menu__link">PROYECTOS</a>
                 <a href="#contacto" class="mobile-menu__link">CONTACTO</a>
             </nav>
-            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="mobile-menu__cta">HABLEMOS &rarr;</a>
+            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="mobile-menu__cta">HABLEMOS
+                &rarr;</a>
             <div class="mobile-menu__symbol">
-                <a href="#hero"><img src="logos/TETRAlogSF.png" alt="Tetra Studio" class="tetra-symbol"></a>
+                <a href="#hero"><img src="logos/tetra-logo-nav.png" alt="Tetra Studio" class="tetra-symbol"></a>
             </div>
         </div>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO (CONSOLA INTERACTIVA TETRA STUDIO) -->
     <section class="hero" id="hero">
+        <div class="hero__content hero__content--console">
+            <!-- CONSOLA TETRA (carcasa 3D + 12 teclas interactivas + pantalla terminal) -->
+            <div class="console" id="tetraConsole">
+                <img class="console__case" src="logos/tetra-console-case.png" alt="Consola interactiva Tetra Studio" width="1264" height="848">
+                <div class="console__screen">
+                    <div class="console__meta"><span>TETRA / &Iacute;NDICE</span><span id="consoleStatus">LISTO</span></div>
+                    <h2 class="console__title" id="consoleTitle">
+                        <span class="sr-only" id="consoleLabel">TETRA STUDIO</span>
+                        <span id="consoleTyped" aria-hidden="true"></span><span class="console__caret" aria-hidden="true"></span>
+                    </h2>
+                    <p class="console__desc" id="consoleDesc">Tecnolog&iacute;a, facturaci&oacute;n y contenido en un solo lugar.</p>
+                </div>
+                <nav class="console__keys" aria-label="Atajos de navegaci&oacute;n">
+                    <!-- Fila superior: T E T R A -->
+                    <a class="key key--claro" style="left:20.807%;top:49.882%;width:9.968%;height:12.028%" href="#estudio" data-title="TETRA ESTUDIO" data-desc="Tecnolog&iacute;a, dise&ntilde;o y estrategia en un mismo equipo."><span class="key__base"></span><span class="key__face"><span class="key__char">T</span><span class="key__sub">ESTUDIO</span></span></a>
+                    <a class="key key--silver" style="left:33.465%;top:49.764%;width:9.968%;height:12.028%" href="#planes" data-title="E-COMMERCE" data-desc="Tu tienda online con carrito sin comisiones por venta."><span class="key__base"></span><span class="key__face"><span class="key__char">E</span><span class="key__sub">E-COMMERCE</span></span></a>
+                    <a class="key key--gris" style="left:46.203%;top:49.646%;width:9.968%;height:12.028%" href="#servicios" data-title="TECNOLOG&Iacute;A" data-desc="Sistemas, automatizaciones y desarrollo a medida."><span class="key__base"></span><span class="key__face"><span class="key__char">T</span><span class="key__sub">TECNOLOG&Iacute;A</span></span></a>
+                    <a class="key key--oscuro" style="left:59.652%;top:49.646%;width:9.968%;height:12.028%" href="#proyectos" data-title="CASOS DE &Eacute;XITO" data-desc="Desaf&iacute;o, soluci&oacute;n e impacto real en marcas locales."><span class="key__base"></span><span class="key__face"><span class="key__char">R</span><span class="key__sub">RESULTADOS</span></span></a>
+                    <a class="key key--negro" style="left:73.339%;top:49.646%;width:9.968%;height:12.028%" href="#planes" data-title="FACTURACI&Oacute;N ARCA" data-desc="Facturaci&oacute;n autom&aacute;tica integrada a tu suscripci&oacute;n."><span class="key__base"></span><span class="key__face"><span class="key__char">A</span><span class="key__sub">ARCA</span></span></a>
+                    <!-- Fila inferior: S T U D I O + HABLEMOS -->
+                    <a class="key key--oscuro key--sm" style="left:19.502%;top:68.561%;width:5.380%;height:10.849%" href="#servicios" data-title="SERVICIOS" data-desc="Branding, web, redes, pauta y producci&oacute;n audiovisual."><span class="key__base"></span><span class="key__face"><span class="key__char">S</span><span class="key__sub">SERVICIOS</span></span></a>
+                    <a class="key key--claro key--sm" style="left:25.672%;top:68.738%;width:5.380%;height:10.849%" href="#creators" data-title="TETRA CREATORS" data-desc="Creadores locales seleccionados para tu marca."><span class="key__base"></span><span class="key__face"><span class="key__char">T</span><span class="key__sub">CREATORS</span></span></a>
+                    <a class="key key--negro key--sm" style="left:32.278%;top:68.939%;width:5.380%;height:10.849%" href="#creators" data-title="CONTENIDO UGC" data-desc="Videos y fotos aut&eacute;nticas listas para pautar."><span class="key__base"></span><span class="key__face"><span class="key__char">U</span><span class="key__sub">UGC</span></span></a>
+                    <a class="key key--silver key--sm" style="left:38.964%;top:69.139%;width:5.380%;height:10.849%" href="#contacto" data-title="DESARROLLO" data-desc="Software y plataformas dise&ntilde;adas para tu empresa."><span class="key__base"></span><span class="key__face"><span class="key__char">D</span><span class="key__sub">A MEDIDA</span></span></a>
+                    <a class="key key--gris key--sm" style="left:46.044%;top:69.351%;width:5.380%;height:10.849%" href="#about" data-title="QUI&Eacute;NES SOMOS" data-desc="Un estudio cercano que acompa&ntilde;a cada etapa."><span class="key__base"></span><span class="key__face"><span class="key__char">I</span><span class="key__sub">IDENTIDAD</span></span></a>
+                    <a class="key key--claro key--sm" style="left:52.850%;top:69.564%;width:5.380%;height:10.849%" href="#proceso" data-title="C&Oacute;MO TRABAJAMOS" data-desc="Descubrir, definir, crear, lanzar y escalar."><span class="key__base"></span><span class="key__face"><span class="key__char">O</span><span class="key__sub">PROCESO</span></span></a>
+                    <a class="key key--bar key--long" style="left:60.997%;top:69.700%;width:26.266%;height:11.400%" href="#contacto" data-title="HABLEMOS" data-desc="Escribinos y armamos el plan ideal para tu negocio."><span class="key__base"></span><span class="key__face"><svg class="key__return-icon" viewBox="0 0 28 18" fill="none" aria-hidden="true"><path d="M24 2v7a2 2 0 0 1-2 2H4m0 0 5-5m-5 5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>HABLEMOS</b></span></a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR (MODELO HÍBRIDO) -->
+    <section class="value-prop" id="propuesta">
         <div class="hero__symbol-bg">
             <img src="logos/TETRAlogSF.png" alt="" class="tetra-symbol tetra-symbol--massive" data-parallax="0.15">
         </div>
         <div class="hero__content">
-            <div class="hero__title" data-reveal>
-                <span class="hero__title-line">TETRA</span>
-                <span class="hero__title-line">STUDIO</span>
-            </div>
-            <div class="hero__subtitle" data-reveal data-delay="200">
-                <span>CREAMOS</span>
-                <span>IDENTIDADES.</span>
-                <span>CREAMOS</span>
-                <span>CONTENIDO.</span>
-            </div>
-            <p class="hero__description" data-reveal data-delay="400">
-                Estudio creativo centrado en marcas, dise&ntilde;o, desarrollo y creaci&oacute;n de contenido.
+            <h1 class="hero__title" data-reveal data-delay="100">
+                <span class="hero__title-line">TECNOLOG&Iacute;A Y CONTENIDO</span>
+                <span class="hero__title-line">PARA ESCALAR TU NEGOCIO.</span>
+            </h1>
+            <p class="hero__subtitle-hybrid" data-reveal data-delay="200">
+                Unificamos tu tienda online sin comisiones, facturaci&oacute;n autom&aacute;tica con ARCA y producci&oacute;n audiovisual en
+                una sola suscripci&oacute;n mensual, o desarrollamos sistemas a medida para tu empresa.
             </p>
+            <div class="hero__cta-group" data-reveal data-delay="300">
+                <a href="#planes" class="btn btn--primary btn--large hero__btn hero__btn-primary">VER PLANES MENSUALES
+                    <span>&rarr;</span></a>
+                <a href="#contacto" class="btn btn--outline btn--large hero__btn hero__btn-secondary">DESARROLLO A
+                    MEDIDA</a>
+            </div>
         </div>
     </section>
 
@@ -80,13 +126,14 @@
         <div class="intro__inner">
             <div class="intro__left" data-reveal>
                 <h2 class="intro__title">
-                    <span>WE CREATE</span>
-                    <span>WITH PURPOSE.</span>
+                    <span>CREAMOS CON</span>
+                    <span>PROPÓSITO.</span>
                 </h2>
             </div>
             <div class="intro__right" data-reveal data-delay="200">
                 <p class="intro__text">
-                    En TETRA unimos tecnolog&iacute;a, creatividad y estrategia para convertir ideas en soluciones digitales, marcas y experiencias que generan impacto.
+                    En TETRA unimos tecnología, creatividad y estrategia para convertir ideas en soluciones digitales,
+                    marcas y experiencias que generan impacto.
                 </p>
                 <a href="#about" class="btn btn--outline">CONOC&Eacute; TETRA <span>&rarr;</span></a>
             </div>
@@ -97,7 +144,7 @@
     <section class="services" id="servicios">
         <div class="services__inner">
             <h2 class="services__title" data-reveal>
-                <span>&iquest;QUE</span>
+                <span>&iquest;QU&Eacute;</span>
                 <span>REALIZAMOS?</span>
             </h2>
             <div class="services__list">
@@ -105,37 +152,229 @@
                     <span class="services__number">01</span>
                     <h3 class="services__name">BRANDING</h3>
                     <p class="services__desc">Identidad visual, estrategia y construcci&oacute;n de marca.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
                 </div>
                 <div class="services__item" data-reveal data-delay="100">
                     <span class="services__number">02</span>
                     <h3 class="services__name">DESARROLLO</h3>
-                    <p class="services__desc">Desarrollo de software, sistemas, automatizaciones.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <p class="services__desc">Desarrollo de software, sistemas y automatizaciones.</p>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
                 </div>
                 <div class="services__item" data-reveal data-delay="200">
                     <span class="services__number">03</span>
-                    <h3 class="services__name">WEB</h3>
-                    <p class="services__desc">Landing pages, sitios web, tiendas online.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <h3 class="services__name">WEB &amp; ECOMMERCE</h3>
+                    <p class="services__desc">Tiendas online sin comisiones, cat&aacute;logos y landing pages.</p>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
                 </div>
                 <div class="services__item" data-reveal data-delay="300">
                     <span class="services__number">04</span>
-                    <h3 class="services__name">CREACI&Oacute;N DE CONTENIDO</h3>
-                    <p class="services__desc">Producci&oacute;n de contenido para marcas.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <h3 class="services__name">PRODUCCI&Oacute;N AUDIOVISUAL</h3>
+                    <p class="services__desc">Fotograf&iacute;a, Reels y contenido de alto impacto para marcas.</p>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
                 </div>
                 <div class="services__item" data-reveal data-delay="400">
                     <span class="services__number">05</span>
                     <h3 class="services__name">GESTI&Oacute;N DE REDES</h3>
-                    <p class="services__desc">Manejamos tus redes para mayor alcance.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <p class="services__desc">Manejamos tus redes para mayor alcance y conversi&oacute;n.</p>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
                 </div>
                 <div class="services__item" data-reveal data-delay="500">
                     <span class="services__number">06</span>
-                    <h3 class="services__name">MARKETING</h3>
-                    <p class="services__desc">Estrategias, publicidades, conexion con influencers.</p>
-                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')"></div>
+                    <h3 class="services__name">MARKETING &amp; ADS</h3>
+                    <p class="services__desc">Estrategias digitales, pauta publicitaria y conexi&oacute;n con creadores.
+                    </p>
+                    <div class="services__hover-img" style="background-image: url('uploads/service-branding.jpg')">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES Y PRECIOS (SUSCRIPCIÓN MENSUAL ARS) -->
+    <section class="plans" id="planes">
+        <div class="plans__inner">
+            <div class="plans__header">
+                <div class="plans__header-left" data-reveal>
+                    <span class="plans__tag">SUSCRIPCI&Oacute;N MENSUAL &bull; PRECIOS EN ARS</span>
+                    <h2 class="plans__title">
+                        <span>PLANES</span>
+                        <span>Y PRECIOS.</span>
+                    </h2>
+                </div>
+                <div class="plans__header-right" data-reveal data-delay="150">
+                    <p class="plans__intro-text">
+                        Sin comisiones por venta ni costos sorpresa. Eleg&iacute; abono mensual previsible o pago &uacute;nico anual con descuento.
+                    </p>
+                    <div class="plans__controls">
+                        <div class="plans__billing-toggle" role="group" aria-label="Modalidad de pago">
+                            <button type="button" class="billing-btn active" data-billing="monthly" aria-pressed="true">MENSUAL</button>
+                            <button type="button" class="billing-btn" data-billing="annual" aria-pressed="false">ANUAL <span class="billing-btn__badge">AHORR&Aacute;</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plans__grid">
+                <!-- PLAN 01 -->
+                <div class="plan-card" data-reveal data-delay="0">
+                    <div class="plan-card__top">
+                        <span class="plan-card__num">PLAN 01</span>
+                        <h3 class="plan-card__name">CAT&Aacute;LOGO DIGITAL + PEDIDOS POR WHATSAPP</h3>
+                        <p class="plan-card__tagline">Para comercios que dan sus primeros pasos y buscan evitar complicaciones t&eacute;cnicas.</p>
+                    </div>
+                    <div class="plan-card__pricing" data-monthly-price="$30.000" data-annual-price="$320.000" data-monthly-note="Pago &uacute;nico anual: $320.000 ARS &middot; Ahorr&aacute;s $40.000" data-annual-note="Ahorr&aacute;s $40.000 vs. abono mensual ($30.000/mes)">
+                        <div class="plan-card__price-row">
+                            <span class="plan-card__amount">$30.000</span>
+                            <span class="plan-card__period">ARS / mes</span>
+                        </div>
+                        <div class="plan-card__annual-note">Pago &uacute;nico anual: $320.000 ARS &middot; Ahorr&aacute;s $40.000</div>
+                    </div>
+                    <div class="plan-card__features">
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span>Cat&aacute;logo web interactivo con carrito de compras que consolida los pedidos directamente al <strong>WhatsApp</strong> del negocio.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span>Incluye un <strong>panel propio</strong> para gestionar el historial de ventas.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span>Personalizaci&oacute;n gen&eacute;rica (logo y colores sobre c&oacute;digo base).</span>
+                        </div>
+                    </div>
+                    <div class="plan-card__cta-wrap">
+                        <a href="https://wa.me/5493815456354?text=Hola%20Tetra%2C%20quiero%20solicitar%20el%20Plan%2001%20%E2%80%94%20Cat%C3%A1logo%20Digital%20%2B%20Pedidos%20por%20WhatsApp%20(%2430.000%20ARS%2Fmes)"
+                            target="_blank" rel="noopener" class="btn btn--outline btn--full plan-card__btn"
+                            data-plan="01"
+                            data-plan-name="Plan 01 — Catálogo Digital + Pedidos por WhatsApp"
+                            data-monthly-price="$30.000 ARS/mes"
+                            data-annual-price="$320.000 ARS (pago único anual)">
+                            SOLICITAR PLAN 01 <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PLAN 02 (RECOMENDADO) -->
+                <div class="plan-card plan-card--featured" data-reveal data-delay="100">
+                    <div class="plan-card__badge">RECOMENDADO &bull; M&Aacute;S POPULAR</div>
+                    <div class="plan-card__top">
+                        <span class="plan-card__num">PLAN 02</span>
+                        <h3 class="plan-card__name">TIENDA ONLINE + AUTOMATIZACI&Oacute;N FISCAL</h3>
+                        <p class="plan-card__tagline">Nuestra soluci&oacute;n integral sin comisiones por venta.</p>
+                    </div>
+                    <div class="plan-card__pricing" data-monthly-price="$60.000" data-annual-price="$640.000" data-monthly-note="Pago &uacute;nico anual: $640.000 ARS &middot; Ahorr&aacute;s $80.000" data-annual-note="Ahorr&aacute;s $80.000 vs. abono mensual ($60.000/mes)">
+                        <div class="plan-card__price-row">
+                            <span class="plan-card__amount">$60.000</span>
+                            <span class="plan-card__period">ARS / mes</span>
+                        </div>
+                        <div class="plan-card__annual-note">Pago &uacute;nico anual: $640.000 ARS &middot; Ahorr&aacute;s $80.000</div>
+                    </div>
+                    <div class="plan-card__features">
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Tienda online</strong> con carrito de compras completo, sin comisiones por venta.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Integraci&oacute;n nativa directa con ARCA</strong> para emisi&oacute;n autom&aacute;tica de comprobantes fiscales.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span>Soporte t&eacute;cnico continuo y mantenimiento de infraestructura incluido.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span>Personalizaci&oacute;n gen&eacute;rica (logo y colores sobre c&oacute;digo base).</span>
+                        </div>
+                    </div>
+                    <div class="plan-card__cta-wrap">
+                        <a href="https://wa.me/5493815456354?text=Hola%20Tetra%2C%20quiero%20elegir%20el%20Plan%2002%20%E2%80%94%20Tienda%20Online%20%2B%20Automatizaci%C3%B3n%20Fiscal%20(%2460.000%20ARS%2Fmes)"
+                            target="_blank" rel="noopener" class="btn btn--primary btn--full plan-card__btn"
+                            data-plan="02"
+                            data-plan-name="Plan 02 — Tienda Online + Automatización Fiscal"
+                            data-monthly-price="$60.000 ARS/mes"
+                            data-annual-price="$640.000 ARS (pago único anual)">
+                            ELEGIR PLAN 02 (M&Aacute;S POPULAR) <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PLAN 03 -->
+                <div class="plan-card" data-reveal data-delay="200">
+                    <div class="plan-card__top">
+                        <span class="plan-card__num">PLAN 03</span>
+                        <h3 class="plan-card__name">ECOSISTEMA FULL GROWTH + DASHBOARD</h3>
+                        <p class="plan-card__tagline">La soluci&oacute;n llave en mano para comercios consolidados en expansi&oacute;n.</p>
+                    </div>
+                    <div class="plan-card__pricing" data-monthly-price="$110.000" data-annual-price="$1.200.000" data-monthly-note="Pago &uacute;nico anual: $1.200.000 ARS &middot; Ahorr&aacute;s $120.000" data-annual-note="Ahorr&aacute;s $120.000 vs. abono mensual ($110.000/mes)">
+                        <div class="plan-card__price-row">
+                            <span class="plan-card__amount">$110.000</span>
+                            <span class="plan-card__period">ARS / mes</span>
+                        </div>
+                        <div class="plan-card__annual-note">Pago &uacute;nico anual: $1.200.000 ARS &middot; Ahorr&aacute;s $120.000</div>
+                    </div>
+                    <div class="plan-card__features">
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Tienda online completa + facturaci&oacute;n ARCA</strong> integrada.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Visitas mensuales presenciales</strong> para producci&oacute;n de contenido audiovisual (fotos/Reels).</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Gesti&oacute;n estrat&eacute;gica de pauta paga</strong> (MetaAds y GoogleAds).</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Dashboard ejecutivo</strong> de control en tiempo real.</span>
+                        </div>
+                        <div class="plan-card__feature">
+                            <span class="plan-card__check">&#10003;</span>
+                            <span><strong>Personalizaci&oacute;n alta:</strong> adaptaci&oacute;n a identidad de marca, filtros personalizados y configuraci&oacute;n de m&eacute;tricas a medida.</span>
+                        </div>
+                        <p class="plan-card__note">
+                            No incluye creadora de contenido (se puede contratar por separado en <a href="#creators">Tetra Creators</a>).
+                        </p>
+                    </div>
+                    <div class="plan-card__cta-wrap">
+                        <a href="https://wa.me/5493815456354?text=Hola%20Tetra%2C%20quiero%20escalar%20con%20el%20Plan%2003%20%E2%80%94%20Ecosistema%20Full%20Growth%20%2B%20Dashboard%20(%24110.000%20ARS%2Fmes)"
+                            target="_blank" rel="noopener" class="btn btn--outline btn--full plan-card__btn"
+                            data-plan="03"
+                            data-plan-name="Plan 03 — Ecosistema Full Growth + Dashboard"
+                            data-monthly-price="$110.000 ARS/mes"
+                            data-annual-price="$1.200.000 ARS (pago único anual)">
+                            QUIERO ESCALAR CON EL PLAN 03 <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="plans__footnote" data-reveal>
+                * Ning&uacute;n plan incluye dominio propio (<code>.com</code> / <code>.com.ar</code>). Si ya ten&eacute;s uno lo vinculamos, o te acompa&ntilde;amos a registrarlo a tu nombre.
+            </p>
+
+            <!-- MÓDULO DE FLEXIBILIDAD: PLAN PERSONALIZADO -->
+            <div class="plans__custom" data-reveal>
+                <div class="plans__custom-content">
+                    <span class="plans__custom-tag">PLAN PERSONALIZADO &bull; FLEXIBILIDAD TOTAL</span>
+                    <h4 class="plans__custom-title">&iquest;Necesit&aacute;s una soluci&oacute;n a tu medida?</h4>
+                    <p class="plans__custom-text">
+                        Combinamos base tecnol&oacute;gica, creaci&oacute;n de contenido y pauta seg&uacute;n la etapa de tu negocio. Armamos un abono mensual a tu medida.
+                    </p>
+                </div>
+                <div class="plans__custom-action">
+                    <a href="https://wa.me/5493815456354?text=Hola%20Tetra%2C%20quiero%20cotizar%20un%20plan%20a%20medida%20para%20mi%20negocio"
+                        target="_blank" rel="noopener" class="btn btn--white plans__custom-btn" id="customPlanBtn">
+                        ARMAR MI PLAN PERSONALIZADO <span>&rarr;</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -152,34 +391,35 @@
             </div>
             <div class="creators__header-right" data-reveal data-delay="200">
                 <p class="creators__intro-text">
-                    Conectamos marcas con creators seleccionadas para producir contenido aut&eacute;ntico, relevante y alineado con cada identidad.
+                    Conectamos tu marca con creadores locales seleccionados para producir contenido UGC aut&eacute;ntico
+                    y listo para pautar.
                 </p>
             </div>
         </div>
 
         <div class="creators__manifesto" data-reveal>
             <h3 class="creators__manifesto-title">
-                <span>THE PEOPLE</span>
-                <span>BEHIND THE</span>
-                <span>CONTENT.</span>
+                <span>LAS PERSONAS</span>
+                <span>DETR&Aacute;S DEL</span>
+                <span>CONTENIDO.</span>
             </h3>
         </div>
 
-        <!-- FILTERS -->
+        <!-- FILTROS -->
         <div class="creators__filters" data-reveal>
             <div class="creators__filter-group">
                 <span class="creators__filter-label">CATEGOR&Iacute;A</span>
                 <div class="creators__filter-btns" id="categoryFilters">
                     <button class="filter-btn active" data-filter="all">TODOS</button>
-                    <button class="filter-btn" data-filter="fashion">FASHION</button>
-                    <button class="filter-btn" data-filter="beauty">BEAUTY</button>
+                    <button class="filter-btn" data-filter="fashion">MODA</button>
+                    <button class="filter-btn" data-filter="beauty">BELLEZA</button>
                     <button class="filter-btn" data-filter="lifestyle">LIFESTYLE</button>
-                    <button class="filter-btn" data-filter="food">FOOD</button>
-                    <button class="filter-btn" data-filter="travel">TRAVEL</button>
+                    <button class="filter-btn" data-filter="food">GASTRONOM&Iacute;A</button>
+                    <button class="filter-btn" data-filter="travel">VIAJES</button>
                     <button class="filter-btn" data-filter="fitness">FITNESS</button>
                     <button class="filter-btn" data-filter="ugc">UGC</button>
-                    <button class="filter-btn" data-filter="product">PRODUCT</button>
-                    <button class="filter-btn" data-filter="social">SOCIAL MEDIA</button>
+                    <button class="filter-btn" data-filter="product">PRODUCTO</button>
+                    <button class="filter-btn" data-filter="social">REDES SOCIALES</button>
                 </div>
             </div>
             <div class="creators__filter-group">
@@ -195,9 +435,10 @@
             </div>
         </div>
 
-        <!-- CATALOG GRID -->
+        <!-- GRID DE CREADORES -->
         <div class="creators__catalog" id="creatorsCatalog">
-            <div class="creator-card" data-category="todos" data-location="tucuman" data-instagram="supercuutee" data-reveal>
+            <div class="creator-card" data-category="todos" data-location="tucuman" data-instagram="supercuutee"
+                data-reveal>
                 <div class="creator-card__img">
                     <img src="uploads/creator-sol.jpg" alt="SOL" loading="lazy">
                     <div class="creator-card__symbol">
@@ -209,11 +450,14 @@
                     <span class="creator-card__role">CONTENT CREATOR</span>
                     <span class="creator-card__cats">TODOS</span>
                     <span class="creator-card__loc">TUCUM&Aacute;N</span>
-                    <a href="https://www.instagram.com/supercuutee/" target="_blank" rel="noopener" class="creator-card__instagram" onclick="event.stopPropagation()">@supercuutee <span>&nearr;</span></a>
+                    <a href="https://www.instagram.com/supercuutee/" target="_blank" rel="noopener"
+                        class="creator-card__instagram" onclick="event.stopPropagation()">@supercuutee
+                        <span>&nearr;</span></a>
                 </div>
             </div>
 
-            <div class="creator-card" data-category="todos" data-location="buenos-aires" data-instagram="lourmorales" data-reveal data-delay="100">
+            <div class="creator-card" data-category="todos" data-location="tucuman" data-instagram="lourmorales"
+                data-reveal data-delay="100">
                 <div class="creator-card__img">
                     <img src="uploads/creator-lour.jpg" alt="LOUR" loading="lazy">
                     <div class="creator-card__symbol">
@@ -225,11 +469,14 @@
                     <span class="creator-card__role">CONTENT CREATOR</span>
                     <span class="creator-card__cats">TODOS</span>
                     <span class="creator-card__loc">TUCUM&Aacute;N</span>
-                    <a href="https://www.instagram.com/lourmorales/" target="_blank" rel="noopener" class="creator-card__instagram" onclick="event.stopPropagation()">@lourmorales <span>&nearr;</span></a>
+                    <a href="https://www.instagram.com/lourmorales/" target="_blank" rel="noopener"
+                        class="creator-card__instagram" onclick="event.stopPropagation()">@lourmorales
+                        <span>&nearr;</span></a>
                 </div>
             </div>
 
-            <div class="creator-card" data-category="todos" data-location="tucuman" data-instagram="_maiatorress" data-reveal data-delay="200">
+            <div class="creator-card" data-category="todos" data-location="tucuman" data-instagram="_maiatorress"
+                data-reveal data-delay="200">
                 <div class="creator-card__img">
                     <img src="uploads/creator-maia.jpg" alt="MAIA" loading="lazy">
                     <div class="creator-card__symbol">
@@ -241,12 +488,14 @@
                     <span class="creator-card__role">CONTENT CREATOR</span>
                     <span class="creator-card__cats">TODOS</span>
                     <span class="creator-card__loc">TUCUM&Aacute;N</span>
-                    <a href="https://www.instagram.com/_maiatorress/" target="_blank" rel="noopener" class="creator-card__instagram" onclick="event.stopPropagation()">@_maiatorress <span>&nearr;</span></a>
+                    <a href="https://www.instagram.com/_maiatorress/" target="_blank" rel="noopener"
+                        class="creator-card__instagram" onclick="event.stopPropagation()">@_maiatorress
+                        <span>&nearr;</span></a>
                 </div>
             </div>
         </div>
 
-        <!-- LOOKING FOR SOMEONE CTA -->
+        <!-- CTA CREATORS -->
         <div class="creators__cta" data-reveal>
             <div class="creators__cta-inner">
                 <div class="creators__cta-left">
@@ -254,10 +503,11 @@
                 </div>
                 <div class="creators__cta-right">
                     <h3 class="creators__cta-title">
-                        <span>LOOKING</span>
-                        <span>FOR SOMEONE?</span>
+                        <span>&iquest;BUSC&Aacute;S UN CREATOR</span>
+                        <span>PARA TU MARCA?</span>
                     </h3>
-                    <p class="creators__cta-text">Contanos qu&eacute; tipo de contenido necesit&aacute;s y encontraremos el creator adecuado para tu marca.</p>
+                    <p class="creators__cta-text">Contanos qu&eacute; tipo de contenido necesit&aacute;s y encontraremos
+                        el creator adecuado para tu marca.</p>
                     <button class="btn btn--primary" id="openCreatorForm">ENCONTRAR CREATOR <span>&rarr;</span></button>
                 </div>
             </div>
@@ -270,8 +520,9 @@
         <div class="modal__content">
             <button class="modal__close" id="modalClose">&times;</button>
             <h3 class="modal__title">SOLICITAR CREATOR</h3>
-            <p class="modal__contact">Complet&aacute; los datos y enviaremos tu solicitud a <a href="mailto:tetra.studio26@gmail.com" class="contact-email-link">tetra.studio26@gmail.com</a>.</p>
-            <form class="modal__form" id="creatorForm" data-recipient="tetra.studio26@gmail.com">
+            <p class="modal__contact">Complet&aacute; los datos y enviaremos tu solicitud a <a
+                    href="mailto:hola@tetrastudiotuc.com" class="contact-email-link">hola@tetrastudiotuc.com</a>.</p>
+            <form class="modal__form" id="creatorForm" data-recipient="hola@tetrastudiotuc.com">
                 <div class="form-honeypot" aria-hidden="true">
                     <label>Sitio web <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
                 </div>
@@ -303,15 +554,15 @@
                         <label>CATEGOR&Iacute;A</label>
                         <select name="category">
                             <option value="todos">Todos / Cualquier categor&iacute;a</option>
-                            <option>Fashion</option>
-                            <option>Beauty</option>
+                            <option>Moda</option>
+                            <option>Belleza</option>
                             <option>Lifestyle</option>
-                            <option>Food</option>
-                            <option>Travel</option>
+                            <option>Gastronom&iacute;a</option>
+                            <option>Viajes</option>
                             <option>Fitness</option>
-                            <option>Product</option>
+                            <option>Producto</option>
                             <option>UGC</option>
-                            <option>Social Media</option>
+                            <option>Redes Sociales</option>
                         </select>
                     </div>
                 </div>
@@ -331,74 +582,94 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>FECHA</label>
+                    <label>FECHA ESTIMADA</label>
                     <input type="date" name="date">
                 </div>
                 <div class="form-group">
                     <label>DESCRIPCI&Oacute;N DEL PROYECTO</label>
                     <textarea name="description" rows="4"></textarea>
                 </div>
-                <button type="submit" class="btn btn--primary btn--full" id="creatorSubmitBtn">ENVIAR SOLICITUD <span>&rarr;</span></button>
+                <button type="submit" class="btn btn--primary btn--full" id="creatorSubmitBtn">ENVIAR SOLICITUD
+                    <span>&rarr;</span></button>
                 <p class="form-status" id="creatorFormStatus" role="status" aria-live="polite"></p>
             </form>
         </div>
     </div>
 
-    <!-- PROJECTS -->
+    <!-- PROYECTOS (CASOS DE ÉXITO INTERACTIVOS) -->
     <section class="projects" id="proyectos">
         <div class="projects__inner">
             <h2 class="projects__title" data-reveal>
-                <span>PROYECTOS.</span>
-                <span></span>
+                <span>CASOS DE</span>
+                <span>&Eacute;XITO.</span>
             </h2>
             <div class="projects__grid">
-                <div class="project-item project-item--large" data-reveal>
+                <div class="project-item project-item--large" data-project="cafs" tabindex="0" role="button"
+                    aria-label="Ver caso de éxito de CAFS" data-reveal>
                     <div class="project-item__img">
                         <img src="uploads/project-cafs.jpg" alt="CAFS" loading="lazy">
                     </div>
                     <div class="project-item__info">
-                        <span class="project-item__name">CAFS</span>
-                        <span class="project-item__type">PAGINA WEB</span>
-                        <span class="project-item__year">2026</span>
+                        <div class="project-item__meta">
+                            <span class="project-item__name">CAFS</span>
+                            <span class="project-item__type">P&Aacute;GINA WEB &amp; CAT&Aacute;LOGO</span>
+                            <span class="project-item__year">2026</span>
+                        </div>
+                        <span class="project-item__badge">VER CASO <span>&nearr;</span></span>
                     </div>
                     <div class="project-item__symbol">
                         <img src="logos/TETRAlogSF.png" alt="">
                     </div>
                 </div>
-                <div class="project-item project-item--tall" data-reveal data-delay="100">
+
+                <div class="project-item project-item--tall" data-project="cukies" tabindex="0" role="button"
+                    aria-label="Ver caso de éxito de Cukies" data-reveal data-delay="100">
                     <div class="project-item__img">
                         <img src="uploads/project-cukies.jpg" alt="CUKIES" loading="lazy">
                     </div>
                     <div class="project-item__info">
-                        <span class="project-item__name">CUKIES</span>
-                        <span class="project-item__type">BRANDING</span>
-                        <span class="project-item__year">2026</span>
+                        <div class="project-item__meta">
+                            <span class="project-item__name">CUKIES</span>
+                            <span class="project-item__type">BRANDING &amp; IDENTIDAD</span>
+                            <span class="project-item__year">2026</span>
+                        </div>
+                        <span class="project-item__badge">VER CASO <span>&nearr;</span></span>
                     </div>
                     <div class="project-item__symbol">
                         <img src="logos/TETRAlogSF.png" alt="">
                     </div>
                 </div>
-                <div class="project-item" data-reveal data-delay="200">
+
+                <div class="project-item" data-project="confimed" tabindex="0" role="button"
+                    aria-label="Ver caso de éxito de Confimed" data-reveal data-delay="200">
                     <div class="project-item__img">
                         <img src="uploads/project-confimed.jpg" alt="CONFIMED" loading="lazy">
                     </div>
                     <div class="project-item__info">
-                        <span class="project-item__name">CONFIMED</span>
-                        <span class="project-item__type">SISTEMA</span>
-                        <span class="project-item__year">2026</span>
+                        <div class="project-item__meta">
+                            <span class="project-item__name">CONFIMED</span>
+                            <span class="project-item__type">SISTEMA DE GESTI&Oacute;N M&Eacute;DICA</span>
+                            <span class="project-item__year">2026</span>
+                        </div>
+                        <span class="project-item__badge">VER CASO <span>&nearr;</span></span>
                     </div>
                     <div class="project-item__symbol">
                         <img src="logos/TETRAlogSF.png" alt="">
                     </div>
                 </div>
-                <div class="project-item project-item--wide" data-reveal data-delay="300">
+
+                <div class="project-item project-item--wide" data-project="laboratorio suizo" tabindex="0" role="button"
+                    aria-label="Ver caso de éxito de Laboratorio Suizo" data-reveal data-delay="300">
                     <div class="project-item__img">
                         <img src="uploads/project-laboratorio-suizo.jpg" alt="LABORATORIO SUIZO" loading="lazy">
                     </div>
                     <div class="project-item__info">
-                        <span class="project-item__name">LABORATORIO SUIZO</span>
-                        <span class="project-item__type">SISTEMA</span>
-                        <span class="project-item__year">2026</span>
+                        <div class="project-item__meta">
+                            <span class="project-item__name">LABORATORIO SUIZO</span>
+                            <span class="project-item__type">SISTEMA &amp; AUTOMATIZACI&Oacute;N</span>
+                            <span class="project-item__year">2026</span>
+                        </div>
+                        <span class="project-item__badge">VER CASO <span>&nearr;</span></span>
                     </div>
                     <div class="project-item__symbol">
                         <img src="logos/TETRAlogSF.png" alt="">
@@ -408,10 +679,60 @@
         </div>
     </section>
 
+    <!-- MODAL CASOS DE ÉXITO -->
+    <div class="modal" id="caseStudyModal" aria-hidden="true">
+        <div class="modal__overlay" id="caseStudyOverlay"></div>
+        <div class="modal__content case-modal__content">
+            <button class="modal__close" id="caseStudyClose" aria-label="Cerrar modal">&times;</button>
+            <div class="case-modal__header">
+                <div class="case-modal__tag">CASO DE &Eacute;XITO</div>
+                <h3 class="case-modal__title" id="caseStudyName">CAFS</h3>
+                <div class="case-modal__submeta">
+                    <span class="case-modal__type" id="caseStudyType">P&Aacute;GINA WEB &amp; CAT&Aacute;LOGO</span>
+                    <span class="case-modal__dot">&bull;</span>
+                    <span class="case-modal__year" id="caseStudyYear">2026</span>
+                </div>
+            </div>
+            <div class="case-modal__image-wrap">
+                <img src="uploads/project-cafs.jpg" alt="" id="caseStudyImg" class="case-modal__img">
+            </div>
+            <div class="case-modal__blocks">
+                <div class="case-block">
+                    <div class="case-block__icon">01</div>
+                    <div class="case-block__body">
+                        <h4 class="case-block__title">EL DESAF&Iacute;O</h4>
+                        <p class="case-block__text" id="caseStudyDesafio"></p>
+                    </div>
+                </div>
+                <div class="case-block">
+                    <div class="case-block__icon">02</div>
+                    <div class="case-block__body">
+                        <h4 class="case-block__title">LA SOLUCI&Oacute;N TETRA</h4>
+                        <p class="case-block__text" id="caseStudySolucion"></p>
+                    </div>
+                </div>
+                <div class="case-block">
+                    <div class="case-block__icon">03</div>
+                    <div class="case-block__body">
+                        <h4 class="case-block__title">EL RESULTADO</h4>
+                        <p class="case-block__text" id="caseStudyResultado"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="case-modal__footer">
+                <a href="https://wa.me/5493815456354" target="_blank" rel="noopener"
+                    class="btn btn--primary btn--full case-modal__cta" id="caseStudyCta">
+                    CONSULTAR UN PROYECTO SIMILAR <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- MANIFESTO -->
     <section class="manifesto" id="manifiesto">
         <div class="manifesto__symbol">
-            <img src="logos/tetralogSFblanco.png" alt="" class="tetra-symbol tetra-symbol--manifesto" data-parallax="0.1">
+            <img src="logos/tetralogSFblanco.png" alt="" class="tetra-symbol tetra-symbol--manifesto"
+                data-parallax="0.1">
         </div>
         <div class="manifesto__content">
             <h2 class="manifesto__title">
@@ -438,13 +759,17 @@
             </div>
             <div class="about__right" data-reveal data-delay="200">
                 <p class="about__text">
-                    Un equipo que combina tecnolog&iacute;a, dise&ntilde;o y estrategia para transformar ideas en soluciones digitales.
+                    Un equipo que combina tecnolog&iacute;a, dise&ntilde;o y estrategia para transformar ideas en
+                    soluciones digitales.
                 </p>
                 <p class="about__text">
-                    Creamos sitios web, tiendas online, sistemas, automatizaciones y experiencias digitales, pero nuestro trabajo va m&aacute;s all&aacute; de desarrollar: buscamos entender cada proyecto, detectar sus necesidades y construir soluciones que realmente aporten valor.
+                    Creamos sitios web, tiendas online, sistemas, automatizaciones y experiencias digitales, pero
+                    nuestro trabajo va m&aacute;s all&aacute; de desarrollar: buscamos entender cada proyecto, detectar
+                    sus necesidades y construir soluciones que realmente aporten valor.
                 </p>
                 <p class="about__text">
-                    Trabajamos de forma cercana con nuestros clientes, desde la primera idea hasta la implementaci&oacute;n, acompa&ntilde;ando cada etapa del proceso.
+                    Trabajamos de forma cercana con nuestros clientes, desde la primera idea hasta la
+                    implementaci&oacute;n, acompa&ntilde;ando cada etapa del proceso.
                 </p>
             </div>
         </div>
@@ -462,31 +787,31 @@
                     <span class="process__step-num">01</span>
                     <div class="process__step-line"></div>
                     <h3 class="process__step-name">DESCUBRIR</h3>
-                    <p class="process__step-desc">Entendemos el contexto.</p>
+                    <p class="process__step-desc">Entendemos el contexto de tu negocio.</p>
                 </div>
                 <div class="process__step" data-reveal data-delay="100">
                     <span class="process__step-num">02</span>
                     <div class="process__step-line"></div>
                     <h3 class="process__step-name">DEFINIR</h3>
-                    <p class="process__step-desc">Encontramos la direcci&oacute;n.</p>
+                    <p class="process__step-desc">Trazamos la estrategia t&eacute;cnica y visual.</p>
                 </div>
                 <div class="process__step" data-reveal data-delay="200">
                     <span class="process__step-num">03</span>
                     <div class="process__step-line"></div>
                     <h3 class="process__step-name">CREAR</h3>
-                    <p class="process__step-desc">Transformamos las ideas.</p>
+                    <p class="process__step-desc">Dise&ntilde;amos y desarrollamos la soluci&oacute;n.</p>
                 </div>
                 <div class="process__step" data-reveal data-delay="300">
                     <span class="process__step-num">04</span>
                     <div class="process__step-line"></div>
                     <h3 class="process__step-name">LANZAMIENTO</h3>
-                    <p class="process__step-desc">Llevamos el proyecto al mundo.</p>
+                    <p class="process__step-desc">Ponemos tu proyecto en marcha.</p>
                 </div>
                 <div class="process__step" data-reveal data-delay="400">
                     <span class="process__step-num">05</span>
                     <div class="process__step-line"></div>
-                    <h3 class="process__step-name">CREACI&Oacute;N DE CONTENIDO</h3>
-                    <p class="process__step-desc">Generamos contenido con creators seleccionados.</p>
+                    <h3 class="process__step-name">ESCALAMIENTO</h3>
+                    <p class="process__step-desc">Generamos contenido y optimizamos resultados.</p>
                 </div>
             </div>
             <div class="process__symbol-connector">
@@ -514,23 +839,29 @@
     <!-- CONTACT -->
     <section class="contact" id="contacto">
         <div class="contact__symbol">
-            <img src="logos/tetralogSFblanco.png" alt="" class="tetra-symbol tetra-symbol--contact" data-parallax="0.05">
+            <img src="logos/tetralogSFblanco.png" alt="" class="tetra-symbol tetra-symbol--contact"
+                data-parallax="0.05">
         </div>
         <div class="contact__inner">
             <div class="contact__logo" data-reveal>
-                <img src="logos/tetralogSFblanco.png" alt="Tetra Studio" class="tetra-symbol tetra-symbol--white">
+                <img src="logos/tetra-logo-white-nav.png" alt="Tetra Studio" class="tetra-symbol tetra-symbol--white">
             </div>
             <h2 class="contact__title" data-reveal data-delay="100">
                 <span>CREEMOS</span>
                 <span>ALGO</span>
                 <span>JUNTOS.</span>
             </h2>
-            <p class="contact__text" data-reveal data-delay="200">&iquest;Ten&eacute;s una idea, una marca o un proyecto?</p>
-            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="btn btn--white btn--large contact__btn-whatsapp" data-reveal data-delay="300">HABLEMOS <span>&rarr;</span></a>
-            <a href="mailto:tetra.studio26@gmail.com" class="contact__email contact-email-link" data-reveal data-delay="325">tetra.studio26@gmail.com</a>
+            <p class="contact__text" data-reveal data-delay="200">&iquest;Ten&eacute;s una idea, una marca o un
+                proyecto?</p>
+            <a href="https://wa.me/5493815456354" target="_blank" rel="noopener"
+                class="btn btn--white btn--large contact__btn-whatsapp" data-reveal data-delay="300">HABLEMOS
+                <span>&rarr;</span></a>
+            <a href="mailto:hola@tetrastudiotuc.com" class="contact__email contact-email-link" data-reveal
+                data-delay="325">hola@tetrastudiotuc.com</a>
             <div class="contact__divider" data-reveal data-delay="350"></div>
-            <p class="contact__text" data-reveal data-delay="400">LOOKING FOR A CREATOR?</p>
-            <a href="#creators" class="btn btn--outline-white btn--large" data-reveal data-delay="450" id="contactFindCreatorBtn">FIND YOUR CREATOR <span>&rarr;</span></a>
+            <p class="contact__text" data-reveal data-delay="400">&iquest;BUSC&Aacute;S UN CREATOR PARA TU MARCA?</p>
+            <a href="#creators" class="btn btn--outline-white btn--large" data-reveal data-delay="450"
+                id="contactFindCreatorBtn">ENCONTRAR CREATOR <span>&rarr;</span></a>
         </div>
     </section>
 
@@ -539,33 +870,51 @@
         <div class="footer__inner">
             <div class="footer__top">
                 <div class="footer__brand">
-                    <img src="logos/tetralogSFblanco.png" alt="Tetra Studio" class="tetra-symbol tetra-symbol--footer">
+                    <img src="logos/tetra-logo-white-nav.png" alt="Tetra Studio"
+                        class="tetra-symbol tetra-symbol--footer">
                     <span class="footer__name">TETRA STUDIO</span>
-                    <p class="footer__tagline">Creative studio for brands with something to say.</p>
+                    <p class="footer__tagline">Estudio tecnol&oacute;gico y creativo para marcas que buscan escalar.</p>
                 </div>
                 <div class="footer__links">
                     <div class="footer__col">
                         <a href="#estudio">ESTUDIO</a>
                         <a href="#servicios">SERVICIOS</a>
+                        <a href="#planes">PLANES</a>
                         <a href="#creators">CREATORS</a>
                         <a href="#proyectos">PROYECTOS</a>
                         <a href="#contacto">CONTACTO</a>
                     </div>
                     <div class="footer__col">
-                        <a href="https://www.instagram.com/tetra.tuc/" target="_blank" rel="noopener" class="footer__link-instagram">Instagram</a>
-                        <a href="https://tiktok.com/@tetra.studio" target="_blank" rel="noopener" class="footer__link-tiktok">TikTok</a>
-                        <a href="https://wa.me/5493815456354" target="_blank" rel="noopener" class="footer__link-whatsapp">WhatsApp</a>
-                        <a href="mailto:tetra.studio26@gmail.com" class="footer__link-email">Email</a>
+                        <a href="https://www.instagram.com/tetra.tuc/" target="_blank" rel="noopener"
+                            class="footer__link-instagram">Instagram</a>
+                        <a href="https://tiktok.com/@tetra.studio" target="_blank" rel="noopener"
+                            class="footer__link-tiktok">TikTok</a>
+                        <a href="https://wa.me/5493815456354" target="_blank" rel="noopener"
+                            class="footer__link-whatsapp">WhatsApp</a>
+                        <a href="mailto:hola@tetrastudiotuc.com" class="footer__link-email">Email</a>
                     </div>
                 </div>
             </div>
             <div class="footer__bottom">
-                <span>&copy; 2026 TETRA STUDIO. All rights reserved.</span>
+                <span>&copy; 2026 TETRA STUDIO. Todos los derechos reservados.</span>
             </div>
         </div>
     </footer>
 
-    <script src="script.js?v=3.0"></script>
-    <script src="admin.js?v=3.0"></script>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/5493815456354?text=Hola%20Tetra%2C%20quiero%20consultar%20para%20digitalizar%20mi%20negocio."
+        target="_blank" rel="noopener" class="whatsapp-float" id="whatsappFloat"
+        aria-label="Contactar a Tetra Studio por WhatsApp">
+        <span class="whatsapp-float__dot"></span>
+        <svg class="whatsapp-float__icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+        </svg>
+        <span class="whatsapp-float__label">&iquest;Hablamos?</span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="script.js?v=3.5"></script>
 </body>
+
 </html>

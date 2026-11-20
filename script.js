@@ -5,14 +5,28 @@
 (function () {
     'use strict';
 
+    // ─── CONFIGURACIÓN CENTRALIZADA ───
+    const WHATSAPP_NUMBER = '5493815456354'; // Reemplazá por tu número real con código de país (ej. 549381XXXXXXX)
+    const CONTACT_EMAIL = 'hola@tetrastudiotuc.com'; // Correo corporativo oficial de Tetra Studio
+
+    function buildWhatsAppUrl(message) {
+        const cleanNumber = String(WHATSAPP_NUMBER).replace(/[^0-9]/g, '');
+        const text = message || 'Hola Tetra, quiero consultar para digitalizar mi negocio.';
+        return 'https://wa.me/' + cleanNumber + '?text=' + encodeURIComponent(text);
+    }
+
     // --- HEADER SCROLL ---
     const header = document.getElementById('header');
+    const heroSection = document.getElementById('hero');
     let lastScroll = 0;
 
     function handleHeaderScroll() {
         const scrollY = window.scrollY;
+        const threshold = heroSection
+            ? Math.max(40, heroSection.offsetHeight - (header ? header.offsetHeight : 76) - 24)
+            : 80;
         if (header) {
-            if (scrollY > 80) {
+            if (scrollY > threshold) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -22,6 +36,9 @@
     }
 
     window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    window.addEventListener('load', handleHeaderScroll);
+    window.addEventListener('resize', handleHeaderScroll);
+    handleHeaderScroll();
 
     // --- BURGER MENU ---
     const burgerBtn = document.getElementById('burgerBtn');
@@ -65,6 +82,9 @@
 
     window.addEventListener('scroll', revealOnScroll, { passive: true });
     window.addEventListener('load', revealOnScroll);
+    window.addEventListener('hashchange', revealOnScroll);
+    document.addEventListener('DOMContentLoaded', revealOnScroll);
+    revealOnScroll();
 
     // --- PARALLAX ---
     function handleParallax() {
@@ -249,7 +269,7 @@
                 form.reset();
                 showCreatorFormStatus('¡Solicitud enviada! Te responderemos a la brevedad.', 'success');
             }).catch(function (error) {
-                const fallback = error.fallbackEmail || form.dataset.recipient || 'tetra.studio26@gmail.com';
+                const fallback = error.fallbackEmail || form.dataset.recipient || CONTACT_EMAIL;
                 showCreatorFormStatus(error.message + '. También podés escribirnos a', 'error', fallback);
             }).then(function () {
                 submitButton.disabled = false;
@@ -446,11 +466,112 @@
         }
     });
 
+    // --- CASOS DE ÉXITO (DATA & INTERACCIÓN) ---
+    const CASE_STUDIES = {
+        'cafs': {
+            name: 'CAFS',
+            type: 'PÁGINA WEB & CATÁLOGO',
+            year: '2026',
+            img: 'uploads/project-cafs.jpg',
+            desafio: 'CAFS necesitaba profesionalizar su presencia digital y presentar su catálogo deportivo de forma ágil, eliminando la fricción de carga lenta y mejorando la tasa de consultas comerciales.',
+            solucion: 'Desarrollamos una web de alto rendimiento, 100% responsiva y optimizada para mobile, con arquitectura ligera, catálogo visual interactivo y conversión directa a canales de venta.',
+            resultado: 'Incremento del 45% en consultas directas de clientes potenciales y una presencia de marca sólida, moderna y alineada a los estándares de la industria.'
+        },
+        'cukies': {
+            name: 'CUKIES',
+            type: 'BRANDING & IDENTIDAD',
+            year: '2026',
+            img: 'uploads/project-cukies.jpg',
+            desafio: 'Posicionar una marca gastronómica joven en un segmento altamente competitivo, requiriendo una identidad visual única que destacara en redes sociales y en el empaque físico.',
+            solucion: 'Creamos un universo de marca completo: logotipo, paleta tipográfica y cromática, diseño de packaging sostenible y lineamientos de dirección artística para redes sociales.',
+            resultado: 'Lanzamiento con récord de ventas en su primer mes, alto engagement orgánico en Instagram y reconocimiento instantáneo de la identidad visual por parte de los clientes.'
+        },
+        'confimed': {
+            name: 'CONFIMED',
+            type: 'SISTEMA DE GESTIÓN MÉDICA',
+            year: '2026',
+            img: 'uploads/project-confimed.jpg',
+            desafio: 'Procesos manuales y descentralizados en la asignación de turnos y seguimiento de pacientes, lo que generaba demoras operativas, llamadas perdidas y sobrecarga del personal.',
+            solucion: 'Diseñamos e implementamos un sistema web centralizado con agenda médica interactiva, gestión de turnos en tiempo real, historial de atenciones y perfiles protegidos.',
+            resultado: 'Reducción de más del 60% en tiempos de gestión administrativa, optimización de la agenda de los profesionales y una experiencia mucho más cómoda para los pacientes.'
+        },
+        'laboratorio suizo': {
+            name: 'LABORATORIO SUIZO',
+            type: 'SISTEMA & AUTOMATIZACIÓN',
+            year: '2026',
+            img: 'uploads/project-laboratorio-suizo.jpg',
+            desafio: 'Digitalizar de forma segura la entrega de resultados de laboratorio clínico, cumpliendo normativas de confidencialidad de datos y eliminando la necesidad de retiro físico.',
+            solucion: 'Desarrollamos una plataforma robusta y segura con cifrado de información, portal de autogestión para pacientes y panel de auditoría y carga para bioquímicos.',
+            resultado: '100% de los análisis disponibles online en segundos, reduciendo drásticamente las consultas en mostrador y mejorando la satisfacción del paciente.'
+        }
+    };
+
+    const caseStudyModal = document.getElementById('caseStudyModal');
+    const caseStudyOverlay = document.getElementById('caseStudyOverlay');
+    const caseStudyClose = document.getElementById('caseStudyClose');
+
+    function openCaseStudy(projectId) {
+        if (!caseStudyModal) return;
+        const key = String(projectId || '').toLowerCase().trim();
+        const data = CASE_STUDIES[key] || CASE_STUDIES['cafs'];
+
+        const nameEl = document.getElementById('caseStudyName');
+        const typeEl = document.getElementById('caseStudyType');
+        const yearEl = document.getElementById('caseStudyYear');
+        const imgEl = document.getElementById('caseStudyImg');
+        const desafioEl = document.getElementById('caseStudyDesafio');
+        const solucionEl = document.getElementById('caseStudySolucion');
+        const resultadoEl = document.getElementById('caseStudyResultado');
+        const ctaEl = document.getElementById('caseStudyCta');
+
+        if (nameEl) nameEl.textContent = data.name;
+        if (typeEl) typeEl.textContent = data.type;
+        if (yearEl) yearEl.textContent = data.year;
+        if (imgEl) {
+            imgEl.src = data.img;
+            imgEl.alt = data.name;
+        }
+        if (desafioEl) desafioEl.textContent = data.desafio;
+        if (solucionEl) solucionEl.textContent = data.solucion;
+        if (resultadoEl) resultadoEl.textContent = data.resultado;
+        if (ctaEl) {
+            ctaEl.href = buildWhatsAppUrl('Hola Tetra, vi el caso de éxito de ' + data.name + ' y quiero consultar por un proyecto similar.');
+        }
+
+        caseStudyModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseStudy() {
+        if (!caseStudyModal) return;
+        caseStudyModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (caseStudyClose) caseStudyClose.addEventListener('click', closeCaseStudy);
+    if (caseStudyOverlay) caseStudyOverlay.addEventListener('click', closeCaseStudy);
+
+    document.addEventListener('click', function (e) {
+        const item = e.target.closest('.project-item');
+        if (!item) return;
+        const projectId = item.dataset.project || (item.querySelector('.project-item__name') ? item.querySelector('.project-item__name').textContent : '');
+        openCaseStudy(projectId);
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('project-item')) {
+            e.preventDefault();
+            const projectId = e.target.dataset.project || '';
+            openCaseStudy(projectId);
+        }
+    });
+
     // Close modals on Escape key
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
             closeModal();
+            closeCaseStudy();
             const profileModal = document.querySelector('.creator-profile-modal');
             if (profileModal) {
                 profileModal.classList.remove('active');
@@ -462,24 +583,201 @@
         }
     });
 
-    // --- HERO TITLE ANIMATION ---
-    const heroTitleLines = document.querySelectorAll('.hero__title-line');
-    function animateHeroTitle() {
-        heroTitleLines.forEach(function (line, index) {
-            setTimeout(function () {
-                line.style.opacity = '1';
-                line.style.transform = 'translateY(0)';
-            }, index * 200);
+    // ─── INICIALIZACIÓN DE ENLACES DE CONVERSIÓN (WHATSAPP + EMAIL) ───
+    function updatePlanLinks(mode) {
+        const isAnnual = mode === 'annual';
+        const planBtns = document.querySelectorAll('.plan-card__btn');
+        planBtns.forEach(function (btn) {
+            const plan = btn.dataset.plan || '01';
+            const planName = btn.dataset.planName || ('Plan ' + plan);
+            const priceText = isAnnual
+                ? (btn.dataset.annualPrice || '')
+                : (btn.dataset.monthlyPrice || '');
+            const msg = priceText
+                ? 'Hola Tetra, quiero elegir el ' + planName + ' (' + priceText + ').'
+                : 'Hola Tetra, quiero info sobre el Plan ' + plan;
+            btn.href = buildWhatsAppUrl(msg);
         });
     }
 
-    heroTitleLines.forEach(function (line) {
-        line.style.opacity = '0';
-        line.style.transform = 'translateY(60px)';
-        line.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
-    });
+    function initBillingToggle() {
+        const toggleBtns = document.querySelectorAll('.billing-btn');
+        if (!toggleBtns.length) return;
 
-    setTimeout(animateHeroTitle, 300);
+        function setBillingMode(mode) {
+            const isAnnual = mode === 'annual';
+            toggleBtns.forEach(function (b) {
+                const active = b.dataset.billing === mode;
+                b.classList.toggle('active', active);
+                b.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+
+            document.querySelectorAll('.plan-card__pricing').forEach(function (box) {
+                const amountEl = box.querySelector('.plan-card__amount');
+                const periodEl = box.querySelector('.plan-card__period');
+                const noteEl = box.querySelector('.plan-card__annual-note');
+                if (amountEl) {
+                    amountEl.textContent = isAnnual ? (box.dataset.annualPrice || '') : (box.dataset.monthlyPrice || '');
+                }
+                if (periodEl) {
+                    periodEl.textContent = isAnnual ? 'ARS / año (pago único)' : 'ARS / mes';
+                }
+                if (noteEl) {
+                    noteEl.textContent = isAnnual ? (box.dataset.annualNote || '') : (box.dataset.monthlyNote || '');
+                }
+            });
+
+            updatePlanLinks(mode);
+        }
+
+        toggleBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                setBillingMode(this.dataset.billing || 'monthly');
+            });
+        });
+
+        setBillingMode('monthly');
+    }
+
+    function initConversionLinks() {
+        // WhatsApp General
+        const generalWaUrl = buildWhatsAppUrl('Hola Tetra, quiero consultar para digitalizar mi negocio.');
+        const headerCta = document.querySelector('.header__cta');
+        if (headerCta) headerCta.href = generalWaUrl;
+
+        const mobileCta = document.querySelector('.mobile-menu__cta');
+        if (mobileCta) mobileCta.href = generalWaUrl;
+
+        const contactWaBtn = document.querySelector('.contact__btn-whatsapp');
+        if (contactWaBtn) contactWaBtn.href = buildWhatsAppUrl('Hola Tetra, quiero coordinar una reunión para digitalizar mi negocio.');
+
+        const footerWaLink = document.querySelector('.footer__link-whatsapp');
+        if (footerWaLink) footerWaLink.href = generalWaUrl;
+
+        const floatWa = document.getElementById('whatsappFloat');
+        if (floatWa) floatWa.href = generalWaUrl;
+
+        // Plan Personalizado
+        const customPlanBtn = document.getElementById('customPlanBtn');
+        if (customPlanBtn) {
+            customPlanBtn.href = buildWhatsAppUrl('Hola Tetra, quiero cotizar un plan a medida para mi negocio');
+        }
+
+        // Planes WhatsApp + Toggle Mensual / Anual
+        updatePlanLinks('monthly');
+        initBillingToggle();
+
+        // Email corporativo
+        document.querySelectorAll('.contact-email-link, .contact__email, .footer__link-email').forEach(function (el) {
+            el.href = 'mailto:' + CONTACT_EMAIL;
+            if (el.classList.contains('contact-email-link') || el.classList.contains('contact__email')) {
+                el.textContent = CONTACT_EMAIL;
+            }
+        });
+
+        const creatorFormEl = document.getElementById('creatorForm');
+        if (creatorFormEl) creatorFormEl.dataset.recipient = CONTACT_EMAIL;
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConversionLinks);
+    } else {
+        initConversionLinks();
+    }
+
+    // --- CONSOLA TETRA: PANTALLA CON TIPEO + TECLAS MECÁNICAS ---
+    (function initConsole() {
+        const consoleEl = document.getElementById('tetraConsole');
+        if (!consoleEl) return;
+        const typedEl = document.getElementById('consoleTyped');
+        const labelEl = document.getElementById('consoleLabel');
+        const descEl = document.getElementById('consoleDesc');
+        const statusEl = document.getElementById('consoleStatus');
+        const keys = Array.prototype.slice.call(consoleEl.querySelectorAll('.key'));
+        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const WELCOME = { title: 'TETRA STUDIO', desc: 'Tecnología, facturación y contenido en un solo lugar.' };
+        const TYPE_MS = 110;
+        let typeTimer = null;
+        let restoreTimer = null;
+        let currentTitle = '';
+        let focusedKey = null;
+        let hovering = false;
+
+        function setStatus(text) { if (statusEl) statusEl.textContent = text; }
+
+        function typeTitle(title, desc) {
+            if (title === currentTitle) return; // ignorar pedidos redundantes
+            clearTimeout(typeTimer);
+            clearTimeout(restoreTimer);
+            currentTitle = title;
+            if (labelEl) labelEl.textContent = title;
+            if (descEl) descEl.textContent = desc;
+            if (reduced) {
+                typedEl.textContent = title;
+                setStatus('LISTO');
+                return;
+            }
+            typedEl.textContent = '';
+            setStatus('ESCRIBIENDO');
+            let i = 0;
+            (function step() {
+                i += 1;
+                typedEl.textContent = title.slice(0, i);
+                if (i < title.length) {
+                    typeTimer = setTimeout(step, TYPE_MS);
+                } else {
+                    setStatus('LISTO');
+                }
+            })();
+        }
+
+        function scheduleRestore() {
+            clearTimeout(restoreTimer);
+            restoreTimer = setTimeout(function () {
+                if (focusedKey || hovering) return;
+                typeTitle(WELCOME.title, WELCOME.desc);
+            }, 350);
+        }
+
+        keys.forEach(function (key) {
+            const show = function () { typeTitle(key.dataset.title, key.dataset.desc); };
+            key.addEventListener('mouseenter', function () { hovering = true; show(); });
+            key.addEventListener('mouseleave', function () { hovering = false; scheduleRestore(); });
+            key.addEventListener('focus', function () { focusedKey = key; show(); });
+            key.addEventListener('blur', function () { focusedKey = null; scheduleRestore(); });
+        });
+
+        // Escritura inicial: pausa de 350 ms y luego tipeo carácter por carácter
+        typedEl.textContent = '';
+        if (descEl) descEl.textContent = WELCOME.desc;
+        setTimeout(function () {
+            currentTitle = '';
+            typeTitle(WELCOME.title, WELCOME.desc);
+        }, 350);
+
+        // Ola de teclas en reposo: escalonada 85 ms, cada 7 s
+        if (!reduced) {
+            function wave() {
+                if (document.hidden || hovering || focusedKey) return;
+                if (document.querySelector('.modal.active')) return;
+                keys.forEach(function (key, idx) {
+                    setTimeout(function () {
+                        key.classList.remove('is-pop');
+                        void key.offsetWidth;
+                        key.classList.add('is-pop');
+                    }, idx * 85);
+                });
+            }
+            keys.forEach(function (key) {
+                key.addEventListener('animationend', function (e) {
+                    if (e.target.classList.contains('key__face')) key.classList.remove('is-pop');
+                });
+            });
+            setTimeout(wave, 2200);
+            setInterval(wave, 7000);
+        }
+    })();
 
     // --- CLIENT LOGOS ANIMATION ---
     function revealClientLogos() {

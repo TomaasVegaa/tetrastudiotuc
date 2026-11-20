@@ -17,36 +17,96 @@
     function defaults() {
         return {
             hero: {
-                title1: 'TETRA',
-                title2: 'STUDIO',
-                subtitle: 'CREAMOS\nIDENTIDADES.\nCREAMOS \nCONTENIDO.',
-                description: 'Estudio creativo centrado en marcas, diseño, desarrollo y creación de contenido.'
+                title1: 'TECNOLOGÍA Y CONTENIDO',
+                title2: 'PARA ESCALAR TU NEGOCIO.',
+                subtitle: 'TECNOLOGÍA Y CONTENIDO\nPARA ESCALAR TU NEGOCIO.',
+                description: 'Unificamos tu tienda online sin comisiones, facturación automática con ARCA y producción audiovisual en una sola suscripción mensual, o desarrollamos sistemas a medida para tu empresa.'
             },
             intro: {
-                title1: 'WE CREATE',
-                title2: 'WITH PURPOSE.',
+                title1: 'CREAMOS CON',
+                title2: 'PROPÓSITO.',
                 text: 'En TETRA unimos tecnología, creatividad y estrategia para convertir ideas en soluciones digitales, marcas y experiencias que generan impacto.',
                 texts: [
                     'En TETRA unimos tecnología, creatividad y estrategia para convertir ideas en soluciones digitales, marcas y experiencias que generan impacto.'
                 ]
             },
             services: {
-                title1: '¿QUE',
+                title1: '¿QUÉ',
                 title2: 'REALIZAMOS?',
                 items: [
                     { num: '01', name: 'BRANDING', desc: 'Identidad visual, estrategia y construcción de marca.', img: 'uploads/service-branding.jpg' },
-                    { num: '02', name: 'DESARROLLO', desc: 'Desarrollo de software, sistemas, automatizaciones.', img: 'uploads/service-branding.jpg' },
-                    { num: '03', name: 'WEB', desc: 'Landing pages, sitios web, tiendas online.', img: 'uploads/service-branding.jpg' },
-                    { num: '04', name: 'CREACIÓN DE CONTENIDO', desc: 'Producción de contenido para marcas.', img: 'uploads/service-branding.jpg' },
-                    { num: '05', name: 'GESTIÓN DE REDES', desc: 'Manejamos tus redes para mayor alcance.', img: 'uploads/service-branding.jpg' },
-                    { num: '06', name: 'MARKETING', desc: 'Estrategias, publicidades, conexion con influencers.', img: 'uploads/service-branding.jpg' }
+                    { num: '02', name: 'DESARROLLO', desc: 'Desarrollo de software, sistemas y automatizaciones.', img: 'uploads/service-branding.jpg' },
+                    { num: '03', name: 'WEB & ECOMMERCE', desc: 'Tiendas online sin comisiones, catálogos y landing pages.', img: 'uploads/service-branding.jpg' },
+                    { num: '04', name: 'CREACIÓN DE CONTENIDO', desc: 'Producción audiovisual profesional y contenido para marcas.', img: 'uploads/service-branding.jpg' },
+                    { num: '05', name: 'GESTIÓN DE REDES', desc: 'Manejamos tus redes para mayor alcance y conversión.', img: 'uploads/service-branding.jpg' },
+                    { num: '06', name: 'MARKETING & ADS', desc: 'Estrategias digitales, pauta publicitaria y conexión con creadores.', img: 'uploads/service-branding.jpg' }
                 ]
+            },
+            plans: {
+                tag: 'SUSCRIPCIÓN MENSUAL • PRECIOS EN ARS',
+                title1: 'PLANES',
+                title2: 'Y PRECIOS.',
+                intro: 'Sin comisiones por venta ni costos sorpresa. Elegí abono mensual previsible o pago único anual con descuento.',
+                items: [
+                    {
+                        num: '01',
+                        name: 'CATÁLOGO DIGITAL + PEDIDOS POR WHATSAPP',
+                        tagline: 'Para comercios que dan sus primeros pasos y buscan evitar complicaciones técnicas.',
+                        priceMonthly: '$30.000',
+                        priceAnnual: '$320.000',
+                        features: [
+                            'Catálogo web interactivo con carrito de compras que consolida los pedidos directamente al WhatsApp del negocio',
+                            'Incluye un panel propio para gestionar el historial de ventas',
+                            'Personalización genérica (logo y colores sobre código base)'
+                        ],
+                        cta: 'SOLICITAR PLAN 01'
+                    },
+                    {
+                        num: '02',
+                        name: 'TIENDA ONLINE + AUTOMATIZACIÓN FISCAL',
+                        tagline: 'Nuestra solución integral sin comisiones por venta.',
+                        featured: true,
+                        badge: 'RECOMENDADO • MÁS POPULAR',
+                        priceMonthly: '$60.000',
+                        priceAnnual: '$640.000',
+                        features: [
+                            'Tienda online con carrito de compras completo, sin comisiones por venta',
+                            'Integración nativa directa con ARCA para emisión automática de comprobantes fiscales',
+                            'Soporte técnico continuo y mantenimiento de infraestructura incluido',
+                            'Personalización genérica (logo y colores sobre código base)'
+                        ],
+                        cta: 'ELEGIR PLAN 02 (MÁS POPULAR)'
+                    },
+                    {
+                        num: '03',
+                        name: 'ECOSISTEMA FULL GROWTH + DASHBOARD',
+                        tagline: 'La solución llave en mano para comercios consolidados en expansión.',
+                        priceMonthly: '$110.000',
+                        priceAnnual: '$1.200.000',
+                        features: [
+                            'Tienda online completa + facturación ARCA integrada',
+                            'Visitas mensuales presenciales para producción de contenido audiovisual (fotos/Reels)',
+                            'Gestión estratégica de pauta paga (MetaAds y GoogleAds)',
+                            'Dashboard ejecutivo de control en tiempo real',
+                            'Personalización alta: adaptación a identidad de marca, filtros personalizados y configuración de métricas a medida'
+                        ],
+                        note: 'No incluye creadora de contenido (se puede contratar por separado en Tetra Creators).',
+                        cta: 'QUIERO ESCALAR CON EL PLAN 03'
+                    }
+                ],
+                footnote: '* Ningún plan incluye dominio propio (.com / .com.ar). Si ya tenés uno lo vinculamos, o te acompañamos a registrarlo a tu nombre.',
+                custom: {
+                    tag: 'PLAN PERSONALIZADO • FLEXIBILIDAD TOTAL',
+                    title: '¿Necesitás una solución a tu medida?',
+                    text: 'Combinamos base tecnológica, creación de contenido y pauta según la etapa de tu negocio. Armamos un abono mensual a tu medida.',
+                    cta: 'ARMAR MI PLAN PERSONALIZADO'
+                }
             },
             creators: {
                 title1: 'TETRA',
                 title2: 'CREATORS',
-                intro: 'Conectamos marcas con creators seleccionadas para producir contenido auténtico, relevante y alineado con cada identidad.',
-                manifesto: 'THE PEOPLE\nBEHIND THE\nCONTENT.',
+                intro: 'Conectamos tu marca con creadores locales seleccionados para producir contenido UGC auténtico y listo para pautar.',
+                manifesto: 'LAS PERSONAS\nDETRÁS DEL\nCONTENIDO.',
                 items: [
                     { name: 'SOL', role: 'CONTENT CREATOR', cats: 'TODOS', catFilter: 'todos', loc: 'TUCUMÁN', locFilter: 'tucuman', instagram: 'supercuutee', img: 'uploads/creator-sol.jpg' },
                     { name: 'LOUR', role: 'CONTENT CREATOR', cats: 'TODOS', catFilter: 'todos', loc: 'TUCUMÁN', locFilter: 'buenos-aires', instagram: 'lourmorales', img: 'uploads/creator-lour.jpg' },
@@ -54,13 +114,13 @@
                 ]
             },
             projects: {
-                title1: 'PROYECTOS.',
-                title2: '',
+                title1: 'CASOS DE',
+                title2: 'ÉXITO.',
                 items: [
-                    { name: 'CAFS', type: 'PAGINA WEB', year: '2026', img: 'uploads/project-cafs.jpg', size: 'large' },
-                    { name: 'CUKIES', type: 'BRANDING', year: '2026', img: 'uploads/project-cukies.jpg', size: 'tall' },
-                    { name: 'CONFIMED', type: 'SISTEMA', year: '2026', img: 'uploads/project-confimed.jpg', size: 'normal' },
-                    { name: 'LABORATORIO SUIZO', type: 'SISTEMA', year: '2026', img: 'uploads/project-laboratorio-suizo.jpg', size: 'wide' }
+                    { id: 'cafs', name: 'CAFS', type: 'PÁGINA WEB & CATÁLOGO', year: '2026', img: 'uploads/project-cafs.jpg', size: 'large' },
+                    { id: 'cukies', name: 'CUKIES', type: 'BRANDING & IDENTIDAD', year: '2026', img: 'uploads/project-cukies.jpg', size: 'tall' },
+                    { id: 'confimed', name: 'CONFIMED', type: 'SISTEMA DE GESTIÓN MÉDICA', year: '2026', img: 'uploads/project-confimed.jpg', size: 'normal' },
+                    { id: 'laboratorio suizo', name: 'LABORATORIO SUIZO', type: 'SISTEMA & AUTOMATIZACIÓN', year: '2026', img: 'uploads/project-laboratorio-suizo.jpg', size: 'wide' }
                 ]
             },
             manifesto: {
@@ -85,11 +145,11 @@
                 title1: '¿CÓMO',
                 title2: 'TRABAJAMOS?',
                 steps: [
-                    { num: '01', name: 'DESCUBRIR', desc: 'Entendemos el contexto.' },
-                    { num: '02', name: 'DEFINIR', desc: 'Encontramos la dirección.' },
-                    { num: '03', name: 'CREAR', desc: 'Transformamos las ideas.' },
-                    { num: '04', name: 'LANZAMIENTO', desc: 'Llevamos el proyecto al mundo.' },
-                    { num: '05', name: 'CREACIÓN DE CONTENIDO', desc: 'Generamos contenido con creators seleccionados.' }
+                    { num: '01', name: 'DESCUBRIR', desc: 'Entendemos el contexto de tu negocio.' },
+                    { num: '02', name: 'DEFINIR', desc: 'Trazamos la estrategia técnica y visual.' },
+                    { num: '03', name: 'CREAR', desc: 'Diseñamos y desarrollamos la solución.' },
+                    { num: '04', name: 'LANZAMIENTO', desc: 'Ponemos tu proyecto en marcha.' },
+                    { num: '05', name: 'ESCALAMIENTO', desc: 'Generamos contenido y optimizamos resultados.' }
                 ]
             },
             clients: {
@@ -102,16 +162,16 @@
                 title2: 'ALGO',
                 title3: 'JUNTOS.',
                 text1: '¿Tenés una idea, una marca o un proyecto?',
-                text2: 'LOOKING FOR A CREATOR?',
-                email: 'tetra.studio26@gmail.com',
+                text2: '¿BUSCÁS UN CREATOR PARA TU MARCA?',
+                email: 'hola@tetrastudiotuc.com',
                 instagram: 'https://www.instagram.com/tetra.tuc/',
                 tiktok: 'https://tiktok.com/@tetra.studio',
                 whatsapp: '+5493815456354'
             },
             footer: {
                 name: 'TETRA STUDIO',
-                tagline: 'Creative studio for brands with something to say.',
-                copyright: '© 2026 TETRA STUDIO. All rights reserved.'
+                tagline: 'Estudio tecnológico y creativo para marcas que buscan escalar.',
+                copyright: '© 2026 TETRA STUDIO. Todos los derechos reservados.'
             }
         };
     }
@@ -636,7 +696,7 @@
             contactHablemos.rel = 'noopener';
         }
 
-        var contactEmail = (D.contact && D.contact.email) ? String(D.contact.email).trim() : 'tetra.studio26@gmail.com';
+        var contactEmail = (D.contact && D.contact.email) ? String(D.contact.email).trim() : 'hola@tetrastudiotuc.com';
         $$('.contact-email-link').forEach(function(emailLink) {
             emailLink.href = 'mailto:' + contactEmail;
             emailLink.textContent = contactEmail;
@@ -954,7 +1014,7 @@
                     input('contact.title3', 'TÍTULO LÍNEA 3', D.contact.title3) +
                     input('contact.text1', 'TEXTO 1', D.contact.text1) +
                     input('contact.text2', 'TEXTO 2', D.contact.text2) +
-                    input('contact.email', 'EMAIL DE CONTACTO', D.contact.email || 'tetra.studio26@gmail.com') +
+                    input('contact.email', 'EMAIL DE CONTACTO', D.contact.email || 'hola@tetrastudiotuc.com') +
                     input('contact.instagram', 'URL INSTAGRAM', D.contact.instagram || 'https://instagram.com/tetra.studio') +
                     input('contact.tiktok', 'URL TIKTOK', D.contact.tiktok || 'https://tiktok.com/@tetra.studio') +
                     input('contact.whatsapp', 'WHATSAPP / TELÉFONO', D.contact.whatsapp || '');
@@ -1007,7 +1067,24 @@
         // Recuperar una sesión válida sin almacenar contraseñas en el navegador.
         checkAdminSession().then(function(authenticated) {
             if (authenticated) loggedIn = true;
+            var isAdminPage = document.body.classList.contains('admin-page') || window.location.pathname.indexOf('admin') !== -1;
+            if (isAdminPage) {
+                if (loggedIn) {
+                    openPanel();
+                } else {
+                    ui.loginEl.classList.add('active');
+                    setTimeout(function () { $('#adminPass').focus(); }, 300);
+                }
+            }
         });
+
+        var openCmsBtn = document.getElementById('openCmsBtn');
+        if (openCmsBtn) {
+            openCmsBtn.addEventListener('click', function() {
+                if (loggedIn) { openPanel(); return; }
+                ui.triggerEl.click();
+            });
+        }
 
         // ─── LOGIN ───
         ui.triggerEl.addEventListener('click', function () {
