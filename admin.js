@@ -163,7 +163,7 @@
                 title3: 'JUNTOS.',
                 text1: '¿Tenés una idea, una marca o un proyecto?',
                 text2: '¿BUSCÁS UN CREATOR PARA TU MARCA?',
-                email: 'hola@tetrastudiotuc.com',
+                email: 'tetra.studio@gmail.com',
                 instagram: 'https://www.instagram.com/tetra.tuc/',
                 tiktok: 'https://tiktok.com/@tetra.studio',
                 whatsapp: '+5493815456354'
@@ -696,7 +696,7 @@
             contactHablemos.rel = 'noopener';
         }
 
-        var contactEmail = (D.contact && D.contact.email) ? String(D.contact.email).trim() : 'hola@tetrastudiotuc.com';
+        var contactEmail = (D.contact && D.contact.email) ? String(D.contact.email).trim() : 'tetra.studio@gmail.com';
         $$('.contact-email-link').forEach(function(emailLink) {
             emailLink.href = 'mailto:' + contactEmail;
             emailLink.textContent = contactEmail;
@@ -1014,7 +1014,7 @@
                     input('contact.title3', 'TÍTULO LÍNEA 3', D.contact.title3) +
                     input('contact.text1', 'TEXTO 1', D.contact.text1) +
                     input('contact.text2', 'TEXTO 2', D.contact.text2) +
-                    input('contact.email', 'EMAIL DE CONTACTO', D.contact.email || 'hola@tetrastudiotuc.com') +
+                    input('contact.email', 'EMAIL DE CONTACTO', D.contact.email || 'tetra.studio@gmail.com') +
                     input('contact.instagram', 'URL INSTAGRAM', D.contact.instagram || 'https://instagram.com/tetra.studio') +
                     input('contact.tiktok', 'URL TIKTOK', D.contact.tiktok || 'https://tiktok.com/@tetra.studio') +
                     input('contact.whatsapp', 'WHATSAPP / TELÉFONO', D.contact.whatsapp || '');

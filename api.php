@@ -160,7 +160,7 @@ function saveLeadLocally($contact) {
 
 function sendContactEmail($contact) {
     $apiKey = configValue('RESEND_API_KEY', 'resend_api_key');
-    $to = configValue('CONTACT_TO', 'contact_to', 'hola@tetrastudiotuc.com');
+    $to = configValue('CONTACT_TO', 'contact_to', 'tetra.studio@gmail.com');
     $from = configValue('CONTACT_FROM', 'contact_from', 'Tetra Studio <onboarding@resend.dev>');
     if ($apiKey === '' || $from === '') {
         return ['ok' => false, 'configuration' => false, 'to' => $to];

@@ -24,7 +24,7 @@ return [
 
     // Formulario de contacto (Resend). Obtené tu clave gratuita en https://resend.com
     'resend_api_key' => '',
-    'contact_to' => 'hola@tetrastudiotuc.com',
+    'contact_to' => 'tetra.studio@gmail.com',
     // Si aún no tenés dominio verificado en Resend, podés usar 'Tetra Studio <onboarding@resend.dev>'
     'contact_from' => 'Tetra Studio <contacto@tu-dominio.com>',
     'email_required' => false,

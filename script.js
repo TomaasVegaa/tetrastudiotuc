@@ -7,7 +7,7 @@
 
     // ─── CONFIGURACIÓN CENTRALIZADA ───
     const WHATSAPP_NUMBER = '5493815456354'; // Reemplazá por tu número real con código de país (ej. 549381XXXXXXX)
-    const CONTACT_EMAIL = 'hola@tetrastudiotuc.com'; // Correo corporativo oficial de Tetra Studio
+    const CONTACT_EMAIL = 'tetra.studio@gmail.com'; // Correo corporativo oficial de Tetra Studio
 
     function buildWhatsAppUrl(message) {
         const cleanNumber = String(WHATSAPP_NUMBER).replace(/[^0-9]/g, '');

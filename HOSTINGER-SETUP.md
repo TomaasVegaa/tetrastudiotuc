@@ -69,7 +69,7 @@ En producción deben quedar así:
 
 En Resend, verificar el dominio y crear una API key. Configurar:
 
-- `contact_to`: `hola@tetrastudiotuc.com`
+- `contact_to`: `tetra.studio@gmail.com`
 - `contact_from`: una dirección del dominio verificado, por ejemplo `Tetra Studio <contacto@dominio.com>`
 
 ## 6. Verificaciones
@@ -91,7 +91,7 @@ Luego verificar:
 1. La portada carga por HTTPS.
 2. El panel acepta la contraseña.
 3. Un cambio guardado sigue visible después de cerrar sesión y abrir otro navegador.
-4. El formulario llega a `hola@tetrastudiotuc.com`.
+4. El formulario llega a `tetra.studio@gmail.com`.
 5. `config.local.php.example`, `database.sql`, `data.json`, `server.js` y la documentación devuelven 403.
 
 ## Mensaje para soporte de Hostinger

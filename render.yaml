@@ -21,6 +21,6 @@ services:
       - key: RESEND_API_KEY
         sync: false
       - key: CONTACT_TO
-        value: tetra.studio26@gmail.com
+        value: tetra.studio@gmail.com
       - key: CONTACT_FROM
         sync: false
